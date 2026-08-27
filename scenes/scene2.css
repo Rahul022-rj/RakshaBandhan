@@ -1,0 +1,679 @@
+/* =====================================
+   SCENE 2 - COMPLETE CSS
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle, #F8F2E8, #EFE5D4 70%, #EADBC8);
+    position: relative;
+    animation: sceneEnter 1.3s ease;
+}
+
+/* Page enter */
+
+@keyframes sceneEnter {
+    from {
+        opacity: 0;
+        transform: scale(1.08);
+        filter: blur(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* =====================================
+   SMOOTH PAGE TRANSITION
+===================================== */
+
+.page-exit {
+    animation: pageExit .9s cubic-bezier(.65, 0, .35, 1) forwards;
+    transform-origin: center;
+}
+
+@keyframes pageExit {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+
+    35% {
+        opacity: .95;
+        transform: scale(1.02);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.12);
+        filter: blur(18px);
+    }
+
+}
+
+/* =====================================
+   SPARKLES
+===================================== */
+
+#sparkleContainer,
+#rakhiContainer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #FFD76A;
+    box-shadow:
+        0 0 6px #FFD76A,
+        0 0 12px rgba(255, 215, 106, .9);
+    animation: twinkle 4s infinite ease-in-out;
+    opacity: .45;
+}
+
+.spark::before,
+.spark::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFD76A;
+}
+
+.spark::before {
+    width: 12px;
+    height: 1px;
+}
+
+.spark::after {
+    width: 1px;
+    height: 12px;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        transform: scale(.8);
+        opacity: .3;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+/* =====================================
+   FLOATING PNG RAKHI
+===================================== */
+
+.rakhi {
+    position: absolute;
+    background-image: url("../assets/images/rakhi.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .78;
+    pointer-events: none;
+    z-index: 2;
+    animation: rakhiFloat linear forwards;
+    filter: drop-shadow(0 3px 6px rgba(120, 70, 20, .18));
+}
+
+@keyframes rakhiFloat {
+
+    0% {
+        transform:
+            translateY(0) translateX(0) rotate(-8deg) scale(.9);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    40% {
+        transform:
+            translateY(-35vh) translateX(-12px) rotate(4deg) scale(1);
+    }
+
+    70% {
+        transform:
+            translateY(-75vh) translateX(10px) rotate(-6deg) scale(1.05);
+    }
+
+    100% {
+        transform:
+            translateY(-120vh) translateX(-8px) rotate(8deg) scale(1);
+        opacity: 0;
+    }
+
+}
+
+/* =====================================
+   TOP UI
+===================================== */
+
+.counter {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    padding: 10px 18px;
+    background: #F8EFE6;
+    border: 3px solid #4A2D20;
+    border-radius: 40px;
+    box-shadow: 0 4px #4A2D20;
+    font-weight: 600;
+    color: #4A2D20;
+    z-index: 20;
+    animation: slideInLeft 0.6s ease forwards;
+    opacity: 0;
+}
+
+.topBtns {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+}
+
+.topBtns button {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 3px solid #4A2D20;
+    background: #F8EFE6;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px #4A2D20;
+    transition: .25s;
+    animation: fadeInScale 0.5s ease forwards;
+    opacity: 0;
+}
+
+.topBtns button:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.topBtns button:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.topBtns button:hover {
+    transform: translateY(-2px);
+}
+
+/* =====================================
+   MAIN CONTENT
+===================================== */
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 68px;
+    color: #47281D;
+    font-weight: 700;
+}
+
+/* =====================================
+   HERO TITLE
+===================================== */
+
+.heroTitle {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #47281D;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1;
+    margin-bottom: 8px;
+    animation: titleReveal 1.2s ease forwards;
+    opacity: 0;
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-30px);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
+
+.titleRakhi {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    margin-top: 8px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 3px rgba(74, 45, 32, .25));
+    animation: titleRakhiFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes titleRakhiFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-3px) rotate(5deg);
+    }
+}
+
+.wave {
+    width: 100px;
+    height: 8px;
+    margin: 12px 0;
+    background:
+        repeating-radial-gradient(circle at 10px -2px,
+            #E56624 0 8px,
+            transparent 9px 18px);
+    animation: waveExpand 1s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+@keyframes waveExpand {
+    0% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+p {
+    font-size: 20px;
+    max-width: 620px;
+    color: #7A6759;
+    line-height: 1.6;
+    margin: 18px 0 35px;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.7s;
+    opacity: 0;
+}
+
+/* =====================================
+   PLAYLIST BUTTON
+===================================== */
+
+.playlistBtn {
+    position: relative;
+    padding: 18px 34px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #4A2D20;
+    background: #FFFFFF;
+    border: 3px solid #4A2D20;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 6px #4A2D20;
+    transition: .25s;
+    animation: buttonPulse 2s ease-in-out infinite, fadeInUp 0.8s ease forwards;
+    animation-delay: 0.9s;
+    opacity: 0;
+}
+
+@keyframes buttonPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 6px #4A2D20, 0 0 20px rgba(234, 108, 39, 0.2);
+    }
+
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 6px #4A2D20, 0 0 40px rgba(234, 108, 39, 0.5);
+    }
+}
+
+.playlistBtn:hover {
+    transform: translateY(-3px);
+}
+
+/* =====================================
+   BACKGROUND POLAROIDS
+===================================== */
+
+.card {
+    position: absolute;
+    width: 100px;
+    height: 130px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    opacity: .12;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+    animation: cardFloat 6s ease-in-out infinite;
+}
+
+.c1 {
+    left: 8%;
+    top: 45%;
+    transform: rotate(-15deg);
+    --rotation: -15deg;
+    --rotation-alt: -10deg;
+}
+
+.c2 {
+    left: 46%;
+    top: 67%;
+    transform: rotate(10deg);
+    --rotation: 10deg;
+    --rotation-alt: 5deg;
+}
+
+.c3 {
+    right: 8%;
+    bottom: 8%;
+    transform: rotate(-8deg);
+    --rotation: -8deg;
+    --rotation-alt: -3deg;
+}
+
+.c4 {
+    right: 10%;
+    top: 18%;
+    transform: rotate(8deg);
+    --rotation: 8deg;
+    --rotation-alt: 3deg;
+}
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(var(--rotation, 0deg));
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(var(--rotation-alt, 5deg));
+    }
+}
+
+/* =====================================
+   PLAYLIST POPUP
+===================================== */
+
+.playlist {
+    position: absolute;
+    top: 72px;
+    right: 18px;
+    width: 260px;
+    background: #F8EFE6;
+    border: 2px solid #4A2D20;
+    border-radius: 22px;
+    padding: 16px;
+    box-shadow: 6px 6px 0 #4A2D20;
+    z-index: 30;
+    transition: .3s;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+.playlist h3 {
+    font-size: 13px;
+    color: #7A6759;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.song {
+    display: flex;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: .25s;
+    animation: slideInLeft 0.5s ease forwards;
+    opacity: 0;
+}
+
+.song:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.song:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.song.active {
+    background: #EAD7C8;
+}
+
+.song:hover {
+    background: #F2E6DA;
+}
+
+.num {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 50%;
+    background: #EA6C27;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.song:not(.active) .num {
+    background: #DDD1C4;
+    color: #555;
+}
+
+.song h4 {
+    font-size: 15px;
+    color: #3F241A;
+}
+
+.song p {
+    font-size: 12px;
+    color: #8B786C;
+    margin: 2px 0 0;
+    line-height: 1.35;
+    animation: none;
+    opacity: 1;
+}
+
+.playlist small {
+    display: block;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 11px;
+    color: #9A867A;
+}
+
+/* =====================================
+   FLOWER BORDER
+===================================== */
+
+.flowers {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 22px;
+    z-index: 15;
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 42px !important;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .titleRakhi {
+        width: 45px !important;
+        height: 45px !important;
+        margin-top: 0 !important;
+    }
+
+    p {
+        font-size: 17px !important;
+        padding: 0 20px;
+    }
+
+    .playlistBtn {
+        font-size: 18px !important;
+        padding: 14px 24px !important;
+    }
+
+    .card {
+        width: 70px !important;
+        height: 95px !important;
+        font-size: 30px !important;
+    }
+
+    .counter {
+        font-size: 14px !important;
+        padding: 6px 12px !important;
+    }
+
+    .topBtns button {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 18px !important;
+    }
+
+    .playlist {
+        right: 10px !important;
+        width: 220px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroTitle {
+        font-size: 32px !important;
+    }
+
+    .titleRakhi {
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    .playlistBtn {
+        font-size: 15px !important;
+        padding: 12px 18px !important;
+    }
+
+    .card {
+        display: none !important;
+    }
+
+    .playlist {
+        width: 190px !important;
+        right: 5px !important;
+        top: 60px !important;
+        padding: 12px !important;
+    }
+
+    .song h4 {
+        font-size: 13px !important;
+    }
+
+    .song p {
+        font-size: 11px !important;
+    }
+}

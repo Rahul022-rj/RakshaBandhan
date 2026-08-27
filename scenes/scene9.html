@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Raksha Bandhan • Scene 9</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@500;600;700&family=Caveat:wght@600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="scene9.css">
+</head>
+
+<body>
+
+    <audio id="player" loop></audio>
+
+    <!-- ================= BACKGROUND ================= -->
+
+    <div id="stars"></div>
+    <div id="sparkles"></div>
+    <div id="rakhiContainer"></div>
+
+    <!-- Top UI -->
+
+    <div class="counter">🌼 <span id="score">1</span></div>
+
+    <div class="topBtns">
+        <button id="pauseBtn">▶</button>
+        <button id="musicBtn">🎵</button>
+    </div>
+
+    <!-- =======================================================
+     STAGE 1 : LETTER
+======================================================= -->
+
+    <section id="stage1" class="stage active">
+
+        <div class="letter">
+
+            <img src="../assets/images/rakhi.png" class="rakhiTop" alt="Rakhi">
+
+            <div class="tape tapeLeft"></div>
+            <div class="tape tapeRight"></div>
+
+            <h3>Dear my cute sister,</h3>
+
+            <div id="typewriter" class="letterBody"></div>
+
+            <div class="signature">— me</div>
+
+        </div>
+
+    </section>
+
+    <!-- =======================================================
+     STAGE 2 : LAST GIFT
+======================================================= -->
+
+    <section id="stage2" class="stage hidden">
+
+        <h4 class="lastGiftTag">LAST GIFT</h4>
+
+        <h1 class="giftTitle">
+            One last gift
+            <br>
+            for you
+        </h1>
+
+        <p class="giftSub">
+            Because every Raksha Bandhan deserves one final surprise.
+        </p>
+
+        <div id="giftBox" class="giftBox">
+            🎁
+        </div>
+
+        <p class="tapText">
+            Tap to open it
+        </p>
+
+        <button id="openGift" class="giftBtn">
+            Open the last gift →
+        </button>
+
+    </section>
+
+    <script src="scene9.js"></script>
+
+</body>
+
+</html>

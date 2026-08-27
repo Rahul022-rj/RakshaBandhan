@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scene 8 • Last Game</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="scene8.css">
+</head>
+<body>
+
+  <!-- Audio -->
+  <audio id="player" loop></audio>
+
+  <!-- Background -->
+  <div id="stars"></div>
+  <div id="sparkles"></div>
+  <div id="flowers"></div>
+
+  <!-- Top UI -->
+  <div class="counter">🌼 <span id="score">0</span></div>
+
+  <div class="topBtns">
+    <button id="pauseBtn">▶</button>
+    <button id="musicBtn">🎵</button>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- STAGE 1 : Emotional Quote -->
+  <!-- ===================================================== -->
+
+  <section id="stage1" class="stage active">
+
+    <div class="quoteBox">
+
+      <div class="line"></div>
+
+      <h1>
+        No matter how much we fight,<br>
+        no matter how annoying you are,<br>
+        I will always have your back.
+      </h1>
+
+      <div class="line"></div>
+
+      <button id="startGame" class="mainBtn">
+        One last game →
+        <span class="btnSpark">✦</span>
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- STAGE 2 : Find Special Rakhi -->
+  <!-- ===================================================== -->
+
+  <section id="stage2" class="stage hidden">
+
+    <p class="tag">LAST GAME</p>
+
+    <h2>One of these rakhis is yours</h2>
+
+    <p class="sub">
+      Only one is the real one. Keep tapping.
+    </p>
+
+    <!-- JS generates 24 rakhis -->
+    <div id="rakhiGrid" class="grid"></div>
+
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- STAGE 3 : Flower Celebration -->
+  <!-- ===================================================== -->
+
+  <section id="stage3" class="stage hidden">
+
+    <p class="tag">LAST GAME</p>
+
+    <h2>One of these rakhis is yours</h2>
+
+    <p class="sub">It was always yours 🫶</p>
+
+    <div id="celebrationRing"></div>
+
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- STAGE 4 : Big Message -->
+  <!-- ===================================================== -->
+
+  <section id="stage4" class="stage hidden">
+
+    <img src="../assets/images/rakhiSpecial.png" class="heroRakhi" alt="Special Rakhi">
+
+    <h1 class="bigText">
+      It was always yours 🪢
+    </h1>
+
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- STAGE 5 : Gift -->
+  <!-- ===================================================== -->
+
+  <section id="stage5" class="stage hidden">
+
+    <div class="giftWrap">
+
+      <div id="giftBox" class="gift">🎁</div>
+
+      <p>Tap to open it</p>
+
+    </div>
+
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- STAGE 6 : Final Surprise -->
+  <!-- ===================================================== -->
+
+  <section id="stage6" class="stage hidden">
+
+    <div class="polaroid">
+
+      <!-- Corner Rakhi -->
+      <img src="../assets/images/rakhi.png" class="pin" alt="Rakhi">
+
+      <!-- Dancing Cat -->
+      <img src="../assets/images/cat.gif" class="finalGif" alt="Cat GIF">
+
+      <h3>Final Surprise unlocked</h3>
+
+      <p>
+        Officially certified: world's most annoying sibling,
+        and one of my favourite people.
+      </p>
+
+    </div>
+
+    <button id="continueBtn" class="mainBtn">
+      Continue →
+      <span class="btnSpark">✦</span>
+    </button>
+
+  </section>
+
+  <!-- JS -->
+  <script src="scene8.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scene 6</title>
+
+    <link rel="stylesheet" href="scene6.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="sparkleContainer"></div>
+    <div id="rakhiContainer"></div>
+
+    <div class="counter">🌼 0</div>
+
+    <div class="topBtns">
+        <button id="pauseBtn">▶</button>
+        <button id="musicBtn">🎵</button>
+    </div>
+
+    <!-- Blurred background -->
+    <div class="bgBlur"></div>
+    <div class="overlay"></div>
+
+    <!-- Stage 1 -->
+    <div id="intro" class="intro">
+        <div class="rakhi">
+            <img src="../assets/images/rakhi.png" alt="Golden Rakhi symbol">
+        </div>
+        <h1>You know us so well! 🎉</h1>
+    </div>
+
+    <!-- Stage 2 -->
+    <div id="giftStage" class="giftStage hidden">
+        <div id="giftBox" class="giftBox">🎁</div>
+        <p>Tap to open it</p>
+    </div>
+
+    <!-- Stage 3 -->
+    <div id="reward" class="reward hidden">
+
+        <div class="polaroid">
+
+            <div class="cornerRakhi">
+                <img src="../assets/images/rakhi.png" alt="Rakhi decoration">
+            </div>
+
+            <img src="../assets/images/scene6.jpeg" alt="Surprise memory photo">
+
+            <h2>Rakhi Surprise #1 unlocked</h2>
+
+            <p>
+                One embarrassing memory that you are NOT allowed to delete. 😌
+            </p>
+
+        </div>
+
+        <button class="continueBtn" id="continueBtn">
+            Continue →
+        </button>
+
+    </div>
+
+    <audio id="player"></audio>
+
+    <script src="scene6.js"></script>
+
+</body>
+
+</html>

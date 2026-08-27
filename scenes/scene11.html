@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scene 11 • Memory Wall</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="scene11.css">
+</head>
+
+<body>
+
+  <!-- Background particles -->
+  <div id="stars"></div>
+  <div id="petals"></div>
+  <div id="lights"></div>
+
+  <!-- Top Buttons -->
+  <div class="counter">🌼 <span>1</span></div>
+
+  <div class="topBtns">
+    <button id="homeBtn">🏠</button>
+    <button id="pauseBtn">▶</button>
+    <button id="musicBtn">🎵</button>
+  </div>
+
+  <!-- Playlist Popup -->
+  <div id="playlistModal" class="playlist-modal">
+    <div class="playlist-card">
+      <div class="playlist-header">YOUR PLAYLIST</div>
+      <div class="playlist-list">
+        <div class="track-item active" data-src="../assets/music/ashiyan.mp3">
+          <div class="track-num">1</div>
+          <div class="track-details">
+            <div class="track-title">Ashiyan</div>
+            <div class="track-sub">for my favourite sibling</div>
+          </div>
+        </div>
+        <div class="track-item" data-src="../assets/music/phoolo.mp3">
+          <div class="track-num">2</div>
+          <div class="track-details">
+            <div class="track-title">Phoolo Ka Taaro Ka</div>
+            <div class="track-sub">the one we both know</div>
+          </div>
+        </div>
+      </div>
+      <div class="playlist-footer">Select a song, then press ▶</div>
+    </div>
+  </div>
+
+  <!-- MAIN MEMORY WALL -->
+  <main class="memoryWall">
+
+    <!-- Wooden Sign Header -->
+    <section class="woodBoard">
+      <img src="../assets/images/board.png" alt="Happy Raksha Bandhan" class="boardImg">
+    </section>
+
+    <!-- Hanging Photos Area -->
+    <section class="photoArea">
+
+      <div class="memoryTag">
+        <p>
+          A bond<br>
+          that time<br>
+          can't break,<br>
+          A promise<br>
+          that hearts<br>
+          never forget.
+        </p>
+      </div>
+
+      <!-- Photos -->
+      <div class="photo p1" data-caption="Childhood Memory 🌟">
+        <img src="../assets/images/priya1.jpeg" alt="Childhood Memory">
+      </div>
+      <div class="photo p2" data-caption="Our Special Bond 💕">
+        <img src="../assets/images/neha1.jpeg" alt="Our Special Bond">
+      </div>
+      <div class="photo p3" data-caption="Funny Moments 😄">
+        <img src="../assets/images/anjali1.jpeg" alt="Funny Moments">
+      </div>
+      <div class="photo p4" data-caption="Sibling Love 💖">
+        <img src="../assets/images/priyanka1.jpeg" alt="Sibling Love">
+      </div>
+      <div class="photo p5" data-caption="Growing Up Together 🌱">
+        <img src="../assets/images/priyanka2.jpeg" alt="Growing Up Together">
+      </div>
+      <div class="photo p6" data-caption="Precious Time ⏰">
+        <img src="../assets/images/priya2.jpeg" alt="Precious Time">
+      </div>
+      <div class="photo p7" data-caption="Always Together 🤝">
+        <img src="../assets/images/neha2.jpeg" alt="Always Together">
+      </div>
+      <div class="photo p8" data-caption="Best Memories 🎀">
+        <img src="../assets/images/anjali2.jpeg" alt="Best Memories">
+      </div>
+
+      <!-- Hearts -->
+      <div class="heart h1"></div>
+      <div class="heart h2"></div>
+      <div class="heart h3"></div>
+      <div class="heart h4"></div>
+
+    </section>
+
+    <!-- Bottom Decoration -->
+    <section class="bottomDecor">
+
+      <div class="fairyLights">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="rangoli"></div>
+      <div class="marigoldGarland"></div>
+
+      <div class="lantern">
+        <div class="flame"></div>
+      </div>
+
+      <div class="candle">
+        <div class="fire"></div>
+      </div>
+
+      <div class="diya">
+        <div class="diyaFlame"></div>
+      </div>
+
+      <div class="thaliPetals">
+        <span class="p1">🌸</span>
+        <span class="p2">🌼</span>
+        <span class="p3">🌺</span>
+        <span class="p4">🌼</span>
+        <span class="p5">🌸</span>
+        <span class="p6">🌼</span>
+        <span class="p7">🌺</span>
+      </div>
+
+      <!-- Thali -->
+      <div class="thali">
+        <div class="rakhiCenter">
+          <img src="../assets/images/rakhiSpecial.png" alt="Rakhi">
+        </div>
+      </div>
+
+      <!-- Promise Frame -->
+      <div class="promiseFrame">
+        <h2>❤️ My Promise to You ❤️</h2>
+        <p>
+          No matter where life takes us,<br>
+          I'll always be here for you.
+        </p>
+        <button id="promiseBtn">
+          Always & Forever 💜
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <audio id="bgMusic" loop></audio>
+
+  <script src="scene11.js"></script>
+
+</body>
+
+</html>

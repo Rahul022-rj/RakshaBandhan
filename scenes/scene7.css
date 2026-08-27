@@ -1,0 +1,901 @@
+/* =========================================
+   SCENE 7 - MATCH THE RAKHIS (FIXED)
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle, #F8F2E8, #EFE5D4 70%, #EADBC8);
+    position: relative;
+    animation: pageEnter .8s ease;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: scale(.97);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* =========================================
+   SPARKLES
+========================================= */
+
+#sparkleContainer,
+#rakhiContainer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #FFD76A;
+    box-shadow:
+        0 0 8px #FFD76A,
+        0 0 14px rgba(255, 215, 106, .8);
+    opacity: .45;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+.spark::before,
+.spark::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFD76A;
+}
+
+.spark::before {
+    width: 12px;
+    height: 1px;
+}
+
+.spark::after {
+    width: 1px;
+    height: 12px;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: .25;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* =========================================
+   FLOATING RAKHI PNG
+========================================= */
+
+.rakhi {
+    position: absolute;
+    background: url("../assets/images/rakhi.png") center/contain no-repeat;
+    opacity: .75;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .15));
+    animation: floatRakhi linear forwards;
+    z-index: 1;
+}
+
+@keyframes floatRakhi {
+    0% {
+        transform: translateY(0) rotate(-8deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(8deg);
+        opacity: 0;
+    }
+}
+
+/* =========================================
+   TOP UI
+========================================= */
+
+.counter {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    padding: 10px 18px;
+    background: #F8EFE6;
+    border: 3px solid #4A2D20;
+    border-radius: 40px;
+    box-shadow: 0 4px #4A2D20;
+    font-weight: 600;
+    color: #4A2D20;
+    z-index: 50;
+    animation: slideInLeft 0.6s ease forwards;
+    opacity: 0;
+}
+
+.topBtns {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    gap: 10px;
+    z-index: 50;
+}
+
+.topBtns button {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 3px solid #4A2D20;
+    background: #F8EFE6;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px #4A2D20;
+    transition: .25s;
+    animation: fadeInScale 0.5s ease forwards;
+    opacity: 0;
+}
+
+.topBtns button:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.topBtns button:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.topBtns button:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+    pointer-events: auto;
+}
+
+/* Tag text */
+.tag {
+    padding: 7px 18px;
+    border: 2px solid #4A2D20;
+    border-radius: 30px;
+    background: #F8EFE6;
+    color: #4A2D20;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    box-shadow: 0 3px #4A2D20;
+    animation: tagReveal 0.6s ease forwards;
+    opacity: 0;
+    z-index: 20;
+    position: relative;
+}
+
+@keyframes tagReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Heading h1 */
+h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 62px;
+    line-height: 1;
+    color: #47281D;
+    margin-bottom: 10px;
+    animation: headingZoom 0.8s ease forwards;
+    opacity: 0;
+    z-index: 20;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes headingZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-3deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.05) rotate(1deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Paragraph text - STAYS VISIBLE */
+p {
+    color: #8A7868;
+    margin-bottom: 28px;
+    font-size: 18px;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+    z-index: 20;
+    position: relative;
+    font-weight: 500;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   MEMORY GRID
+========================================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    gap: 14px;
+    z-index: 20;
+    position: relative;
+}
+
+/* Card */
+
+.card {
+    width: 110px;
+    height: 150px;
+    perspective: 1000px;
+    cursor: pointer;
+    animation: cardFlipIn 0.6s ease forwards;
+    opacity: 0;
+    z-index: 20;
+    position: relative;
+}
+
+.card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+@keyframes cardFlipIn {
+    0% {
+        opacity: 0;
+        transform: rotateY(90deg) scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) scale(1);
+    }
+}
+
+.inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card.flip .inner {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border: 3px solid #E66522;
+    box-shadow: 0 5px #B44F19;
+}
+
+/* Front */
+
+.front {
+    background: #EA6C27;
+}
+
+.front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Back */
+
+.back {
+    background: #FFFFFF;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back img {
+    width: 82px;
+    height: 82px;
+    object-fit: contain;
+}
+
+/* ✅ FIX: Matched cards - STAY VISIBLE, don't fade out */
+.card.matched {
+    pointer-events: none;
+    animation: matchedPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 1 !important;
+    /* ✅ Force stay visible */
+    transform: scale(1) !important;
+    /* ✅ Force stay at normal size */
+}
+
+@keyframes matchedPop {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(1.15) rotate(-3deg);
+        opacity: 1;
+    }
+
+    60% {
+        transform: scale(1.05) rotate(2deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+        /* ✅ End at opacity 1 */
+    }
+}
+
+/* ✅ Also ensure flip stays visible */
+.card.matched .inner {
+    transform: rotateY(180deg);
+}
+
+/* =========================================
+   GIFT OVERLAY
+========================================= */
+
+.giftOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(70, 55, 44, .35);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    animation: overlayFade 0.6s ease forwards;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes overlayFade {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Gift */
+
+.giftStage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.giftBox {
+    font-size: 90px;
+    cursor: pointer;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .28));
+    animation:
+        giftDrop .8s ease-out,
+        giftShake 1.5s infinite 1s,
+        giftGlow 2s ease-in-out infinite 1.5s;
+}
+
+@keyframes giftGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .28));
+    }
+
+    50% {
+        filter: drop-shadow(0 8px 35px rgba(255, 200, 50, .5));
+    }
+}
+
+.giftStage h3 {
+    color: white;
+    margin-top: 12px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+@keyframes giftDrop {
+    0% {
+        transform: translateY(-220px) scale(.5);
+        opacity: 0;
+    }
+
+    70% {
+        transform: translateY(25px) scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes giftShake {
+
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    20% {
+        transform: rotate(-8deg);
+    }
+
+    40% {
+        transform: rotate(8deg);
+    }
+
+    60% {
+        transform: rotate(-5deg);
+    }
+
+    80% {
+        transform: rotate(5deg);
+    }
+}
+
+.openGift {
+    animation: giftOpen .7s forwards;
+}
+
+@keyframes giftOpen {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.25) rotate(-10deg);
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* =========================================
+   REWARD CARD
+========================================= */
+
+.rewardCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: cardPop .7s cubic-bezier(.22, 1.3, .36, 1);
+}
+
+.polaroid {
+    width: 380px;
+    background: #F8F5F0;
+    border: 3px solid #4A2D20;
+    border-radius: 24px;
+    padding: 14px;
+    box-shadow: 8px 8px #4A2D20;
+    position: relative;
+}
+
+.rewardGif {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 16px;
+    background: #ECECEC;
+}
+
+.cornerRakhi {
+    position: absolute;
+    right: 10px;
+    top: -12px;
+    width: 52px;
+    height: 52px;
+    animation: cornerFloat 2.5s infinite ease-in-out;
+}
+
+.cornerRakhi img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes cornerFloat {
+    50% {
+        transform: translateY(-4px) rotate(6deg);
+    }
+}
+
+.polaroid h2 {
+    font-family: "Cormorant Garamond", serif;
+    text-align: center;
+    color: #47281D;
+    margin: 12px 0 6px;
+    font-size: 34px;
+}
+
+.polaroid p {
+    text-align: center;
+    color: #7A6759;
+    line-height: 1.5;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+@keyframes cardPop {
+    0% {
+        opacity: 0;
+        transform: scale(.45) rotate(-8deg);
+    }
+
+    70% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================================
+   CONTINUE BUTTON
+========================================= */
+
+.nextBtn {
+    margin-top: 26px;
+    padding: 16px 38px;
+    border: none;
+    border-radius: 40px;
+    background: #EA6C27;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px #5A311D;
+    position: relative;
+    transition: .25s;
+    animation: buttonRise 0.6s ease forwards, glowPulse 2.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+@keyframes buttonRise {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 6px #5A311D, 0 0 20px rgba(234, 108, 39, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 6px #5A311D, 0 0 40px rgba(234, 108, 39, 0.6);
+    }
+}
+
+.nextBtn:hover {
+    transform: translateY(-2px);
+}
+
+.nextBtn::after {
+    content: "✦";
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    font-size: 18px;
+    color: #FFD76A;
+    -webkit-text-stroke: 1px #4A2D20;
+    animation: starFloat 2s infinite;
+}
+
+@keyframes starFloat {
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+/* =========================================
+   BOTTOM FLOWERS
+========================================= */
+
+.flowers {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 18px;
+    z-index: 15;
+}
+
+/* =========================================
+   PAGE EXIT
+========================================= */
+
+.pageExit {
+    animation: pageFade .7s forwards;
+}
+
+@keyframes pageFade {
+    to {
+        opacity: 0;
+        transform: scale(1.05);
+        filter: blur(10px);
+    }
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 80px) !important;
+        gap: 10px !important;
+    }
+
+    .card {
+        width: 80px !important;
+        height: 110px !important;
+    }
+
+    .back img {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    h1 {
+        font-size: 42px !important;
+    }
+
+    .polaroid {
+        width: 320px !important;
+    }
+
+    .rewardGif {
+        height: 280px !important;
+    }
+
+    .topBtns button {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 18px !important;
+    }
+
+    .counter {
+        font-size: 14px !important;
+        padding: 6px 12px !important;
+    }
+
+    .flowers {
+        font-size: 24px !important;
+        letter-spacing: 12px !important;
+    }
+
+    .tag {
+        font-size: 10px !important;
+        padding: 5px 12px !important;
+    }
+
+    p {
+        font-size: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(3, 65px) !important;
+        gap: 8px !important;
+    }
+
+    .card {
+        width: 65px !important;
+        height: 90px !important;
+    }
+
+    .front img {
+        object-fit: contain !important;
+        padding: 10px;
+    }
+
+    .back img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    h1 {
+        font-size: 28px !important;
+    }
+
+    p {
+        font-size: 13px !important;
+    }
+
+    .polaroid {
+        width: 280px !important;
+        padding: 10px !important;
+    }
+
+    .rewardGif {
+        height: 200px !important;
+    }
+
+    .polaroid h2 {
+        font-size: 22px !important;
+    }
+
+    .polaroid p {
+        font-size: 12px !important;
+    }
+
+    .nextBtn {
+        font-size: 16px !important;
+        padding: 12px 24px !important;
+    }
+
+    .topBtns {
+        gap: 6px !important;
+    }
+
+    .topBtns button {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 14px !important;
+    }
+
+    .giftBox {
+        font-size: 60px !important;
+    }
+
+    .giftStage h3 {
+        font-size: 16px !important;
+    }
+
+    .cornerRakhi {
+        width: 35px !important;
+        height: 35px !important;
+        top: -8px !important;
+        right: 5px !important;
+    }
+}

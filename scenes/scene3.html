@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scene 3</title>
+
+    <link rel="stylesheet" href="scene3.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="sparkleContainer"></div>
+    <div id="rakhiContainer"></div>
+
+    <div class="counter">🌼 0</div>
+
+    <div class="topBtns">
+        <button id="pauseBtn">▶</button>
+        <button id="musicBtn">🎵</button>
+    </div>
+
+    <!-- PLAYLIST -->
+    <div class="playlist hidden" id="playlist">
+
+        <h3>YOUR PLAYLIST</h3>
+
+        <div class="song active" data-song="1">
+            <div class="num">1</div>
+            <div class="text">
+                <h4>Ashiyan</h4>
+                <p>for my favourite sibling</p>
+            </div>
+        </div>
+
+        <div class="song" data-song="2">
+            <div class="num">2</div>
+            <div class="text">
+                <h4>Phoolo Ka Taaro Ka</h4>
+                <p>the one we both know</p>
+            </div>
+        </div>
+
+        <div class="bottomOptions">
+            <button id="nextSong">⏭ Next song</button>
+            <button id="turnOff">Turn off 🎀</button>
+        </div>
+
+    </div>
+
+    <!-- Background -->
+    <div class="card c1">🐻</div>
+    <div class="card c2">💐</div>
+    <div class="card c3">📝</div>
+    <div class="card c4">🐹</div>
+
+    <section class="container">
+
+        <h1 class="heroTitle">
+            This one is for you
+            <img src="../assets/images/rakhi.png" alt="Rakhi" class="titleRakhi">
+        </h1>
+
+        <div class="wave"></div>
+
+        <p>
+            I made you a little world. Take your time in it.
+            There is more than you think.
+        </p>
+
+        <div class="musicCard">
+
+            <div class="disc" id="disc"></div>
+
+            <div class="songInfo">
+                <h3 id="songTitle">Ashiyan</h3>
+                <span id="songDesc">for my favourite sibling</span>
+            </div>
+
+            <div class="equalizer">
+                <span></span><span></span><span></span><span></span>
+            </div>
+
+        </div>
+
+        <button class="nextBtn" id="nextBtn">
+            Take me in →
+        </button>
+
+    </section>
+
+    <div class="flowers">
+        🌺 🌸 🌼 🌸 🌼 🌸 🌺 🌼
+    </div>
+
+    <!-- ONLY ONE AUDIO -->
+    <audio id="player"></audio>
+
+    <script src="scene3.js"></script>
+
+</body>
+
+</html>

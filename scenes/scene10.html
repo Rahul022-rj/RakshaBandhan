@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Beautiful Sisters 💕</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="scene10.css">
+</head>
+
+<body>
+
+    <!-- Background Effects -->
+    <div id="particles"></div>
+    <div id="floatingHearts"></div>
+
+    <!-- Top UI -->
+    <div class="topBtns">
+        <button id="homeBtn">🏠</button>
+        <button id="pauseBtn">▶</button>
+        <button id="musicBtn">🎵</button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Title -->
+        <div class="title-section">
+            <h1 class="main-title">My Beautiful Sisters</h1>
+            <div class="title-line"></div>
+            <p class="sub-title">Four hearts, one bond, endless love ❤️</p>
+        </div>
+
+        <!-- Sister Cards -->
+        <div class="sisters-container">
+
+            <!-- 👑 SISTER 1 - ELDEST / BIGGEST SISTER -->
+            <div class="sister-card" id="sister1">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="image-wrapper">
+                            <img src="../assets/images/sister1.jpeg" alt="Eldest Sister">
+                            <div class="overlay">
+                                <span class="sister-number">👑</span>
+                            </div>
+                        </div>
+                        <h3 class="sister-name">Priyanka Didi</h3>
+                    </div>
+                    <div class="card-back">
+                        <div class="quote-wrapper">
+                            <span class="quote-icon">💫</span>
+                            <p class="quote-text">"The eldest sister is the first love, the first teacher, and the first
+                                friend. You showed me how to walk, and I'll always look up to you."</p>
+                            <p class="quote-author">— Your Loving Brother</p>
+                            <span class="sister-emoji">👑</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🌸 SISTER 2 - SECOND SISTER -->
+            <div class="sister-card" id="sister2">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="image-wrapper">
+                            <img src="../assets/images/sister2.jpeg" alt="Second Sister">
+                            <div class="overlay">
+                                <span class="sister-number">🌸</span>
+                            </div>
+                        </div>
+                        <h3 class="sister-name">Priya Didi</h3>
+                    </div>
+                    <div class="card-back">
+                        <div class="quote-wrapper">
+                            <span class="quote-icon">🌺</span>
+                            <p class="quote-text">"You're the one who taught me that love means showing up, even when
+                                it's hard. You've always been my safe place to land."</p>
+                            <p class="quote-author">— Your Loving Brother</p>
+                            <span class="sister-emoji">🌸</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🌷 SISTER 3 - THIRD SISTER -->
+            <div class="sister-card" id="sister3">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="image-wrapper">
+                            <img src="../assets/images/sister3.jpeg" alt="Third Sister">
+                            <div class="overlay">
+                                <span class="sister-number">🌷</span>
+                            </div>
+                        </div>
+                        <h3 class="sister-name">Neha Didi</h3>
+                    </div>
+                    <div class="card-back">
+                        <div class="quote-wrapper">
+                            <span class="quote-icon">🌹</span>
+                            <p class="quote-text">"You're the one who always knows what to say, who brings the sunshine
+                                on cloudy days. Your smile is the light that never fades."</p>
+                            <p class="quote-author">— Your Loving Brother</p>
+                            <span class="sister-emoji">🌷</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 💖 SISTER 4 - YOUNGEST SISTER -->
+            <div class="sister-card" id="sister4">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="image-wrapper">
+                            <img src="../assets/images/sister4.jpeg" alt="Youngest Sister">
+                            <div class="overlay">
+                                <span class="sister-number">💖</span>
+                            </div>
+                        </div>
+                        <h3 class="sister-name">Anjali Didi</h3>
+                    </div>
+                    <div class="card-back">
+                        <div class="quote-wrapper">
+                            <span class="quote-icon">💝</span>
+                            <p class="quote-text">"You're the baby of the family, but you have the biggest heart. You
+                                taught me that being the youngest doesn't mean being the least—it means being the most
+                                loved."</p>
+                            <p class="quote-author">— Your Loving Brother</p>
+                            <span class="sister-emoji">💖</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Button -->
+        <button id="nextBtn" class="next-btn">
+            Continue to Memory Wall →
+            <span class="btn-spark">✨</span>
+        </button>
+
+    </div>
+
+    <!-- Playlist Popup -->
+    <div id="playlistModal" class="playlist-modal">
+        <div class="playlist-card">
+            <div class="playlist-header">YOUR PLAYLIST</div>
+            <div class="playlist-list">
+                <div class="track-item active" data-src="../assets/music/ashiyan.mp3">
+                    <div class="track-num">1</div>
+                    <div class="track-details">
+                        <div class="track-title">Ashiyan</div>
+                        <div class="track-sub">for my favourite sibling</div>
+                    </div>
+                </div>
+                <div class="track-item" data-src="../assets/music/phoolo.mp3">
+                    <div class="track-num">2</div>
+                    <div class="track-details">
+                        <div class="track-title">Phoolo Ka Taaro Ka</div>
+                        <div class="track-sub">the one we both know</div>
+                    </div>
+                </div>
+            </div>
+            <div class="playlist-footer">Select a song, then press ▶</div>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop></audio>
+
+    <script src="scene10.js"></script>
+
+</body>
+
+</html>

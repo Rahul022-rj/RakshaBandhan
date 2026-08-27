@@ -1,0 +1,773 @@
+/* =========================================
+   SCENE 9 - COMPLETE CSS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background:
+        radial-gradient(circle at bottom, #4B1C09 0%, #22053C 45%, #120021 100%);
+    position: relative;
+    color: white;
+    animation: pageEnter 1s ease;
+}
+
+/* Page Enter */
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Page Exit */
+
+.pageExit {
+    animation: pageOut .8s ease forwards;
+}
+
+@keyframes pageOut {
+    to {
+        opacity: 0;
+        transform: scale(.96);
+        filter: blur(12px);
+    }
+}
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+#stars,
+#sparkles,
+#rakhiContainer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Stars */
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: .7;
+    animation: blink 4s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 1;
+        transform: scale(1.8);
+    }
+}
+
+/* Gold Sparkles */
+
+.spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #FFD66D;
+    box-shadow:
+        0 0 8px #FFD66D,
+        0 0 18px rgba(255, 214, 109, .9);
+    animation: twinkle 5s infinite;
+}
+
+.spark::before,
+.spark::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFD66D;
+}
+
+.spark::before {
+    width: 12px;
+    height: 1px;
+}
+
+.spark::after {
+    width: 1px;
+    height: 12px;
+}
+
+@keyframes twinkle {
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+/* Floating Mini Rakhi */
+
+.rakhi {
+    position: absolute;
+    background: url("../assets/images/rakhi.png") center/contain no-repeat;
+    opacity: .18;
+    animation: floatRakhi linear forwards;
+    filter: drop-shadow(0 0 10px rgba(255, 180, 60, .2));
+}
+
+@keyframes floatRakhi {
+
+    0% {
+        transform: translateY(0) rotate(-8deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .18;
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(8deg);
+        opacity: 0;
+    }
+
+}
+
+/* =========================================
+   TOP UI
+========================================= */
+
+.counter {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    padding: 10px 18px;
+    border: 2px solid rgba(255, 181, 66, .35);
+    border-radius: 40px;
+    background: rgba(20, 8, 30, .55);
+    backdrop-filter: blur(12px);
+    color: #FFD66D;
+    font-weight: 600;
+    z-index: 30;
+    animation: slideInLeft 0.6s ease forwards;
+    opacity: 0;
+}
+
+.topBtns {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    gap: 12px;
+    z-index: 30;
+}
+
+.topBtns button {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 181, 66, .35);
+    background: rgba(20, 8, 30, .45);
+    backdrop-filter: blur(10px);
+    color: #FFD66D;
+    font-size: 22px;
+    cursor: pointer;
+    transition: .25s;
+    animation: fadeInScale 0.5s ease forwards;
+    opacity: 0;
+}
+
+.topBtns button:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.topBtns button:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.topBtns button:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   STAGES
+========================================= */
+
+.stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: .6s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.96);
+}
+
+.active {
+    opacity: 1;
+}
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter {
+    width: 670px;
+    background: #F9F5EE;
+    border-radius: 26px;
+    padding: 56px 55px 42px;
+    position: relative;
+    box-shadow:
+        8px 8px 0 #4B2C18,
+        0 30px 60px rgba(0, 0, 0, .35);
+    animation: letterDrop 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes letterDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-80px) rotate(-5deg) scale(0.8);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(10px) rotate(1deg) scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+}
+
+/* Tape */
+
+.tape {
+    position: absolute;
+    width: 56px;
+    height: 18px;
+    opacity: .85;
+}
+
+.tapeLeft {
+    left: 28px;
+    top: -8px;
+    background: #D9B341;
+    transform: rotate(-10deg);
+}
+
+.tapeRight {
+    right: 28px;
+    top: -8px;
+    background: #E58AB3;
+    transform: rotate(8deg);
+}
+
+/* Rakhi */
+
+.rakhiTop {
+    position: absolute;
+    width: 58px;
+    left: 50%;
+    top: -22px;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .18));
+    animation: rakhiFloat 2.8s ease-in-out infinite;
+}
+
+@keyframes rakhiFloat {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-4px);
+    }
+
+}
+
+/* Heading */
+
+.letter h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 42px;
+    color: #EA6C27;
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 600;
+    animation: headingFade 0.8s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+@keyframes headingFade {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Body */
+
+.letterBody {
+    font-size: 19px;
+    color: #5F564D;
+    line-height: 2;
+    text-align: center;
+    min-height: 250px;
+    white-space: pre-line;
+    animation: textAppear 0.5s ease forwards;
+    animation-delay: 0.7s;
+    opacity: 0;
+}
+
+@keyframes textAppear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Typewriter Cursor */
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    background: #EA6C27;
+    animation: blinkCursor .8s infinite;
+}
+
+@keyframes blinkCursor {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Signature */
+
+.signature {
+    text-align: right;
+    margin-top: 18px;
+    color: #A59A90;
+    font-style: italic;
+    font-size: 20px;
+    animation: signatureSlide 0.8s ease forwards;
+    animation-delay: 2s;
+    opacity: 0;
+}
+
+@keyframes signatureSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* =========================================
+   STAGE 2
+========================================= */
+
+.lastGiftTag {
+    color: #F2B544;
+    letter-spacing: 3px;
+    font-size: 14px;
+    margin-bottom: 18px;
+    animation: tagPulse 2s ease-in-out infinite,
+        tagSlide 0.6s ease forwards;
+    opacity: 0;
+}
+
+@keyframes tagPulse {
+
+    0%,
+    100% {
+        letter-spacing: 3px;
+        color: #F2B544;
+    }
+
+    50% {
+        letter-spacing: 6px;
+        color: #FFD700;
+    }
+}
+
+@keyframes tagSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.giftTitle {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 72px;
+    line-height: 1.05;
+    text-align: center;
+    color: #FFF9F0;
+    margin-bottom: 18px;
+    text-shadow: 0 0 24px rgba(255, 220, 120, .15);
+    animation: titleGlow 1s ease forwards;
+    opacity: 0;
+}
+
+@keyframes titleGlow {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+.giftSub {
+    color: #D7C9C0;
+    font-size: 19px;
+    text-align: center;
+    max-width: 520px;
+    margin-bottom: 38px;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gift */
+
+.giftBox {
+    font-size: 96px;
+    cursor: pointer;
+    user-select: none;
+    animation: shake 2s infinite ease-in-out,
+        giftFloat 3s ease-in-out infinite 1s,
+        giftGlow 2.5s ease-in-out infinite 1.5s;
+    transition: .35s;
+    filter: drop-shadow(0 10px 25px rgba(255, 170, 70, .35));
+}
+
+@keyframes giftGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 10px 25px rgba(255, 170, 70, .35));
+    }
+
+    50% {
+        filter: drop-shadow(0 10px 45px rgba(255, 170, 70, .7));
+    }
+}
+
+@keyframes giftFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.giftBox:hover {
+    transform: scale(1.08);
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    20% {
+        transform: rotate(-6deg);
+    }
+
+    40% {
+        transform: rotate(6deg);
+    }
+
+    60% {
+        transform: rotate(-5deg);
+    }
+
+    80% {
+        transform: rotate(4deg);
+    }
+
+}
+
+.tapText {
+    margin-top: 14px;
+    color: #ECE3DC;
+    font-size: 18px;
+    margin-bottom: 34px;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+/* Button */
+
+.giftBtn {
+    padding: 18px 36px;
+    border: none;
+    border-radius: 40px;
+    background: #EA6C27;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px #5A311D;
+    transition: .25s;
+    animation: buttonRise 0.6s ease forwards,
+        glowPulse 2.5s ease-in-out infinite;
+    animation-delay: 0.7s;
+    opacity: 0;
+}
+
+@keyframes buttonRise {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 6px #5A311D, 0 0 20px rgba(234, 108, 39, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 6px #5A311D, 0 0 40px rgba(234, 108, 39, 0.6);
+    }
+}
+
+.giftBtn:hover {
+    transform: translateY(-3px);
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:768px) {
+
+    .letter {
+        width: 92%;
+        padding: 50px 28px 36px;
+    }
+
+    .letter h3 {
+        font-size: 34px;
+    }
+
+    .letterBody {
+        font-size: 17px;
+        line-height: 1.8;
+    }
+
+    .giftTitle {
+        font-size: 54px;
+    }
+
+    .giftBox {
+        font-size: 72px !important;
+    }
+
+    .topBtns button {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 18px !important;
+    }
+
+    .counter {
+        font-size: 14px !important;
+        padding: 6px 12px !important;
+    }
+
+    .giftBtn {
+        font-size: 17px !important;
+        padding: 14px 28px !important;
+    }
+
+    .tapText {
+        font-size: 16px !important;
+    }
+
+    .giftSub {
+        font-size: 16px !important;
+        padding: 0 20px;
+    }
+}
+
+@media(max-width:480px) {
+    .letter {
+        padding: 40px 18px 30px;
+    }
+
+    .letter h3 {
+        font-size: 28px !important;
+    }
+
+    .letterBody {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+        min-height: 180px !important;
+    }
+
+    .signature {
+        font-size: 16px !important;
+    }
+
+    .rakhiTop {
+        width: 40px !important;
+        top: -16px !important;
+    }
+
+    .tape {
+        width: 40px !important;
+        height: 14px !important;
+    }
+
+    .tapeLeft {
+        left: 15px !important;
+        top: -6px !important;
+    }
+
+    .tapeRight {
+        right: 15px !important;
+        top: -6px !important;
+    }
+
+    .giftTitle {
+        font-size: 38px !important;
+    }
+
+    .giftBox {
+        font-size: 55px !important;
+    }
+
+    .giftSub {
+        font-size: 14px !important;
+        padding: 0 15px;
+    }
+
+    .giftBtn {
+        font-size: 15px !important;
+        padding: 12px 20px !important;
+    }
+
+    .tapText {
+        font-size: 14px !important;
+    }
+
+    .lastGiftTag {
+        font-size: 11px !important;
+    }
+
+    .topBtns {
+        gap: 6px !important;
+    }
+
+    .topBtns button {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 14px !important;
+    }
+}

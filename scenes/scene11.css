@@ -1,0 +1,993 @@
+/* ==========================================
+   SCENE 11 - MEMORY WALL
+   ========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(ellipse at center, #2e120a 0%, #170704 65%, #0a0201 100%);
+  color: #fff;
+  position: relative;
+}
+
+/* Background Particles */
+#stars,
+#petals,
+#lights {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #fff;
+  animation: starTwinkle 3s infinite alternate ease-in-out;
+}
+
+@keyframes starTwinkle {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* ==========================================
+   TOP UI
+========================================== */
+.counter {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  background: rgba(35, 12, 6, 0.8);
+  border: 1.5px solid #d4af37;
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.95rem;
+  color: #ffd700;
+  z-index: 20;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.topBtns {
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.topBtns button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(35, 12, 6, 0.8);
+  border: 1.5px solid #d4af37;
+  color: #ffd700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.topBtns button:hover {
+  transform: scale(1.1);
+  background: rgba(65, 22, 12, 0.9);
+}
+
+/* ==========================================
+   MEMORY WALL
+========================================== */
+.memoryWall {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.woodBoard {
+  position: relative;
+  margin-top: 5px;
+  width: 90%;
+  max-width: 950px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  flex-shrink: 0;
+}
+
+.woodBoard .boardImg {
+  width: 100%;
+  height: 100%;
+  max-height: 180px;
+  object-fit: contain;
+}
+
+.photoArea {
+  position: relative;
+  width: 780px;
+  height: 540px;
+  margin-top: -10px;
+}
+
+/* Hanging Strings */
+.photoArea::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 110px;
+  width: 2px;
+  height: 520px;
+  background: linear-gradient(to bottom, #d4af37, #7a4b1e);
+  box-shadow: 280px 0 0 #b87333, 560px 0 0 #b87333;
+  z-index: 2;
+}
+
+/* ==========================================
+   PHOTOS - BASE GRID STYLING
+========================================== */
+.photo {
+  position: absolute;
+  width: 170px;
+  background: #ffffff;
+  padding: 10px 10px 28px 10px;
+  border-radius: 4px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo.p1 {
+  top: 15px;
+  left: 25px;
+  transform: rotate(-1.5deg);
+}
+
+.photo.p2 {
+  top: 190px;
+  left: 25px;
+  transform: rotate(1deg);
+}
+
+.photo.p3 {
+  top: 365px;
+  left: 25px;
+  transform: rotate(-1deg);
+}
+
+.photo.p4 {
+  top: 190px;
+  left: 305px;
+  transform: rotate(-1deg);
+}
+
+.photo.p5 {
+  top: 365px;
+  left: 305px;
+  transform: rotate(1.5deg);
+}
+
+.photo.p6 {
+  top: 15px;
+  left: 585px;
+  transform: rotate(1.5deg);
+}
+
+.photo.p7 {
+  top: 190px;
+  left: 585px;
+  transform: rotate(-1deg);
+}
+
+.photo.p8 {
+  top: 365px;
+  left: 585px;
+  transform: rotate(1deg);
+}
+
+.photo:hover {
+  transform: scale(1.08) rotate(0deg);
+  z-index: 20;
+}
+
+.photo img {
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 2px;
+  pointer-events: auto;
+  display: block;
+}
+
+/* Wooden Peg */
+.photo::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 18px;
+  background: linear-gradient(180deg, #d48c46 0%, #8c5220 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  z-index: 4;
+  transition: all 0.3s ease;
+}
+
+.photo.expanded::before {
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+}
+
+/* ==========================================
+   FIXED OVERLAY & EXPANDED PHOTO POPUP
+========================================== */
+.photo-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 900 !important;
+}
+
+.photo-overlay.active {
+  display: block;
+}
+
+/* DYNAMIC EXPANDED PHOTO CONTAINER (FITS IMAGE EXACTLY) */
+.photo.expanded {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 1000 !important;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95) !important;
+  border-radius: 12px !important;
+  
+  /* Dynamic box size relative to viewport */
+  width: fit-content !important;
+  height: fit-content !important;
+  max-width: 90vw !important;
+  max-height: 85vh !important;
+  
+  padding: 8px !important;
+  display: inline-block !important;
+  background: #ffffff !important;
+  filter: none !important;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.photo.expanded img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 85vw !important;
+  max-height: 80vh !important;
+  object-fit: contain !important; 
+  display: block !important;
+  background: #ffffff !important;
+  border-radius: 8px !important;
+  filter: none !important;
+}
+
+/* CLOSE BUTTON */
+.photo-close {
+  display: none;
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ff4444;
+  color: white;
+  border: 3px solid white;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1005;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+  line-height: 38px;
+  text-align: center;
+}
+
+.photo-close:hover {
+  transform: scale(1.15);
+  background: #ff2222;
+}
+
+.photo.expanded .photo-close {
+  display: block !important;
+  top: -12px !important;
+  right: -12px !important;
+  z-index: 1010 !important;
+}
+
+.photo-caption {
+  display: none !important;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* ==========================================
+   MEMORY TAG
+========================================== */
+.memoryTag {
+  position: absolute;
+  top: 15px;
+  left: 305px;
+  width: 170px;
+  background: #fffdf5;
+  border: 1px solid #e2d7c5;
+  border-radius: 5px;
+  padding: 14px 12px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+
+.memoryTag p {
+  font-family: 'Cormorant Garamond', serif;
+  color: #4a2c11;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+/* ==========================================
+   HEARTS
+========================================== */
+.heart {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #ff4d6d;
+  transform: rotate(-45deg);
+  z-index: 4;
+  animation: heartPulse 2s ease-in-out infinite;
+}
+
+.heart.h1 {
+  animation-delay: 0s;
+  top: 135px;
+  left: 8px;
+  transform: scale(0.65) rotate(-20deg);
+}
+
+.heart.h2 {
+  animation-delay: 0.5s;
+  top: 235px;
+  left: 235px;
+  transform: scale(0.7) rotate(15deg);
+}
+
+.heart.h3 {
+  animation-delay: 1s;
+  top: 295px;
+  left: 450px;
+  transform: scale(0.65) rotate(-30deg);
+}
+
+.heart.h4 {
+  animation-delay: 1.5s;
+  top: 135px;
+  left: 660px;
+  transform: scale(0.7) rotate(20deg);
+}
+
+@keyframes heartPulse {
+  0%,
+  100% {
+    transform: scale(0.65) rotate(-20deg);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(0.85) rotate(-20deg);
+    opacity: 1;
+  }
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #ff4d6d;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -8px;
+  left: 0;
+}
+
+.heart::after {
+  left: 8px;
+  top: 0;
+}
+
+/* ==========================================
+   BOTTOM DECORATIONS & LIGHTS
+========================================== */
+.bottomDecor {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 165px;
+  background: linear-gradient(180deg, #301107 0%, #160602 100%);
+  border-top: 6px solid #4a1d0d;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 20px;
+  box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+.fairyLights {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fairyLights span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffe600;
+  box-shadow: 0 0 10px #ffaa00, 0 0 20px #ffea00;
+  animation: lightPulse 1.8s infinite alternate ease-in-out;
+}
+
+.fairyLights span:nth-child(even) {
+  background: #ff5588;
+  box-shadow: 0 0 10px #ff0055, 0 0 20px #ff3377;
+  animation-delay: 0.9s;
+}
+
+@keyframes lightPulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+.marigoldGarland {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background-image: radial-gradient(circle at 10px 8px, #ff9900 6px, transparent 7px);
+  background-size: 20px 16px;
+  background-repeat: repeat-x;
+  z-index: 2;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+.lantern {
+  position: absolute;
+  left: 90px;
+  bottom: 22px;
+  width: 62px;
+  height: 100px;
+  border: 3.5px solid #d4af37;
+  border-radius: 12px 12px 4px 4px;
+  background: radial-gradient(circle at center, rgba(255, 180, 50, 0.25) 0%, rgba(30, 10, 5, 0.6) 100%);
+  box-shadow: 0 0 25px rgba(255, 165, 0, 0.45);
+}
+
+.lantern::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 14px;
+  border: 3px solid #d4af37;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+
+.candle {
+  position: absolute;
+  left: 175px;
+  bottom: 22px;
+  width: 48px;
+  height: 85px;
+  background: linear-gradient(to right, #fff7eb 0%, #ffe3be 80%, #ebd0a7 100%);
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.candle::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 9px;
+  background: #333;
+}
+
+.lantern .flame,
+.candle .fire {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 22px;
+  background: #ffaa00;
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 12px #ff6600, 0 0 25px #ffaa00;
+  animation: flameFlicker 0.15s infinite alternate ease-in-out;
+}
+
+.lantern .flame {
+  top: 30px;
+}
+
+.candle .fire {
+  top: -24px;
+}
+
+@keyframes flameFlicker {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1.12);
+    opacity: 1;
+  }
+}
+
+.thali {
+  width: 350px;
+  height: 85px;
+  background: radial-gradient(ellipse at center, #a30c0c 0%, #610404 70%, #380000 100%);
+  border: 6px solid #d4af37;
+  border-radius: 50%;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7), inset 0 0 18px rgba(255, 215, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -5px;
+  z-index: 5;
+}
+
+.rakhiCenter {
+  width: 180px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+}
+
+.rakhiCenter img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+.rakhiCenter img:hover {
+  transform: scale(1.3);
+}
+
+.promiseFrame {
+  position: absolute;
+  right: 35px;
+  bottom: 15px;
+  width: 280px;
+  background: #fffdf8;
+  border: 5px solid #7c4323;
+  border-radius: 12px;
+  padding: 20px 18px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  color: #4a2411;
+  z-index: 30;
+}
+
+.promiseFrame h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: #8b1e3f;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.promiseFrame p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+.promiseFrame button {
+  background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+  border: none;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 126, 95, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promiseFrame button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(255, 126, 95, 0.6);
+}
+
+.thaliPetals {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  height: 90px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.thaliPetals span {
+  position: absolute;
+  font-size: 1.1rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  opacity: 0.85;
+}
+
+.thaliPetals .p1 {
+  left: 10px;
+  bottom: 15px;
+  transform: rotate(-15deg);
+}
+
+.thaliPetals .p2 {
+  left: 45px;
+  bottom: -5px;
+  transform: rotate(25deg);
+}
+
+.thaliPetals .p3 {
+  right: 40px;
+  bottom: 0px;
+  transform: rotate(-30deg);
+}
+
+.thaliPetals .p4 {
+  right: 10px;
+  bottom: 18px;
+  transform: rotate(10deg);
+}
+
+.thaliPetals .p5 {
+  left: 180px;
+  bottom: -12px;
+  transform: rotate(45deg);
+}
+
+.thaliPetals .p6 {
+  right: 190px;
+  bottom: 8px;
+  transform: rotate(-45deg);
+}
+
+.thaliPetals .p7 {
+  left: 95px;
+  bottom: 8px;
+  transform: rotate(15deg);
+}
+
+.rangoli {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 153, 0, 0.25) 0%, rgba(212, 175, 55, 0.15) 50%, transparent 75%);
+  border: 2px dashed rgba(255, 215, 0, 0.35);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.diya {
+  position: absolute;
+  left: 240px;
+  bottom: 18px;
+  width: 38px;
+  height: 22px;
+  background: linear-gradient(180deg, #b85c28 0%, #6e300d 100%);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.diya::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -4px;
+  width: 46px;
+  height: 10px;
+  background: #d97736;
+  border-radius: 50%;
+}
+
+.diyaFlame {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 11px;
+  height: 20px;
+  background: radial-gradient(circle at bottom, #ffffff 0%, #ffcc00 40%, #ff3300 100%);
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 12px #ffaa00, 0 0 24px #ff4500;
+  animation: flameFlicker 0.12s infinite alternate ease-in-out;
+}
+
+.playlist-modal {
+  position: absolute;
+  top: 70px;
+  right: 25px;
+  display: none;
+  z-index: 200;
+}
+
+.playlist-modal.active {
+  display: block;
+}
+
+.playlist-card {
+  width: 270px;
+  background: #f7f1e5;
+  border: 3.5px solid #3c2415;
+  border-radius: 24px;
+  padding: 18px 16px;
+  box-shadow: 6px 6px 0px #3c2415;
+  font-family: 'Poppins', sans-serif;
+  color: #3c2415;
+}
+
+.playlist-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #8c7362;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.playlist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: #ede3d3;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.track-item:hover {
+  background: #e4d7c3;
+}
+
+.track-item.active {
+  background: #ebd8ca;
+}
+
+.track-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #d4cfc5;
+  color: #594a3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.track-item.active .track-num {
+  background: #e86d2a;
+  color: #ffffff;
+}
+
+.track-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2b1a0e;
+  line-height: 1.2;
+}
+
+.track-sub {
+  font-size: 0.75rem;
+  color: #8c7766;
+}
+
+.playlist-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #9c8777;
+  font-weight: 500;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+@media screen and (max-width: 768px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .memoryWall {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 180px;
+  }
+
+  .photoArea {
+    width: 100%;
+    transform: scale(0.75);
+    transform-origin: top center;
+  }
+
+  .photo.expanded {
+    width: 85vw !important;
+    height: 85vw !important;
+    padding: 12px !important;
+  }
+
+  .promiseFrame {
+    width: 200px;
+    right: 20px;
+    padding: 12px 14px;
+  }
+
+  .promiseFrame h2 {
+    font-size: 1.1rem;
+  }
+
+  .promiseFrame p {
+    font-size: 0.85rem;
+  }
+
+  .promiseFrame button {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+  }
+
+  .thali {
+    width: 280px;
+    height: 72px;
+  }
+
+  .rakhiCenter {
+    width: 130px;
+    height: 55px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .photoArea {
+    transform: scale(0.55);
+    margin-top: -30px;
+  }
+
+  .photo.expanded {
+    width: 90vw !important;
+    height: 90vw !important;
+    padding: 8px !important;
+  }
+
+  .photo-close {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 16px !important;
+    line-height: 28px !important;
+    top: -12px !important;
+    right: -12px !important;
+  }
+
+  .promiseFrame {
+    width: 170px;
+    right: 15px;
+    padding: 10px 12px;
+  }
+
+  .promiseFrame h2 {
+    font-size: 0.85rem;
+  }
+
+  .promiseFrame p {
+    font-size: 0.7rem;
+  }
+
+  .promiseFrame button {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+
+  .thali {
+    width: 220px;
+    height: 60px;
+  }
+
+  .rakhiCenter {
+    width: 110px;
+    height: 45px;
+  }
+
+  .lantern,
+  .candle {
+    display: none;
+  }
+}

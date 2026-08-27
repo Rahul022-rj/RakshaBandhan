@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scene 2</title>
+
+    <link rel="stylesheet" href="scene2.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="sparkleContainer"></div>
+    <div id="rakhiContainer"></div>
+
+    <div class="counter">🌼 0</div>
+
+    <div class="topBtns">
+        <!-- ✅ This is the Play/Pause button -->
+        <button id="pauseBtn">▶</button>
+        <button id="musicBtn">🎵</button>
+    </div>
+
+    <div class="playlist hidden" id="playlist">
+        <h3>YOUR PLAYLIST</h3>
+
+        <div class="song active" data-song="1">
+            <div class="num">1</div>
+            <div>
+                <h4>Ashiyan</h4>
+                <p>for my favourite sibling</p>
+            </div>
+        </div>
+
+        <div class="song" data-song="2">
+            <div class="num">2</div>
+            <div>
+                <h4>Phoolo Ka Taaro Ka</h4>
+                <p>the one we both know</p>
+            </div>
+        </div>
+
+        <small>Select a song, then press ▶ to play</small>
+    </div>
+
+    <div class="card c1">🐻</div>
+    <div class="card c2">💐</div>
+    <div class="card c3">📝</div>
+    <div class="card c4">🐹</div>
+
+    <section class="container">
+
+        <h1 class="heroTitle">
+            This one is for you
+            <img src="../assets/images/rakhi.png" class="titleRakhi" alt="Rakhi">
+        </h1>
+
+        <div class="wave"></div>
+
+        <p>
+            I made you a little world. Take your time in it.
+            There is more than you think.
+        </p>
+
+        <button id="playlistBtn" class="playlistBtn">
+            Click here, I made a playlist for you 🎵
+        </button>
+
+    </section>
+
+    <div class="flowers">
+        🌺 🌸 🌼 🌸 🌼 🌸 🌺 🌼
+    </div>
+
+    <audio id="player"></audio>
+
+    <script src="scene2.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scene 7 - Match the Rakhis</title>
+
+    <link rel="stylesheet" href="scene7.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Floating Effects -->
+    <div id="sparkleContainer"></div>
+    <div id="rakhiContainer"></div>
+
+    <!-- Top Left Counter -->
+    <div class="counter">🌼 0</div>
+
+    <!-- Top Right Buttons -->
+    <div class="topBtns">
+        <button id="pauseBtn">▶</button>
+        <button id="musicBtn">🎵</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <div class="tag">MATCH THEM UP</div>
+
+        <h1>Find the matching<br>rakhis</h1>
+
+        <p>Three pairs. Take your time. 🪄</p>
+
+        <!-- Memory Game Grid -->
+        <div id="grid" class="grid"></div>
+
+    </div>
+
+    <!-- Bottom Flowers -->
+    <div class="flowers">
+        🌼 🌸 🌺 🌸 🌼 🌸 🌺 🌼
+    </div>
+
+    <!-- =========================
+         GIFT OVERLAY
+    ========================== -->
+
+    <div id="giftOverlay" class="giftOverlay hidden">
+
+        <!-- Stage 1 : Gift -->
+        <div id="giftStage" class="giftStage">
+
+            <div id="giftBox" class="giftBox">
+                🎁
+            </div>
+
+            <h3>Tap to open it</h3>
+
+        </div>
+
+        <!-- Stage 2 : Reward -->
+        <div id="rewardCard" class="rewardCard hidden">
+
+            <div class="polaroid">
+
+                <!-- Corner Rakhi PNG -->
+                <div class="cornerRakhi">
+                    <img src="../assets/images/rakhi.png" alt="Rakhi">
+                </div>
+
+                <img class="rewardGif" src="../assets/images/kiss.gif" alt="Surprise GIF">
+
+                <h2>Rakhi Surprise #2 unlocked</h2>
+
+                <p>
+                    One free treat from me.
+                    No expiry, no arguments.
+                </p>
+
+            </div>
+
+            <button id="nextBtn" class="nextBtn">
+                Continue →
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Music -->
+    <audio id="player"></audio>
+
+    <script src="scene7.js"></script>
+
+</body>
+
+</html>

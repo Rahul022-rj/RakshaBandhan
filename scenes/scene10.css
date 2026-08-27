@@ -1,0 +1,786 @@
+/* ==========================================
+   SCENE 10 - SISTERS' GALLERY
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(ellipse at center, #1a0a0a 0%, #2d1215 40%, #1a0808 100%);
+    color: #fff;
+    position: relative;
+}
+
+/* ==========================================
+   BACKGROUND PARTICLES
+========================================== */
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Floating Hearts */
+#floatingHearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatHeart linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.3;
+    }
+
+    90% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ==========================================
+   TOP UI
+========================================== */
+.topBtns {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.topBtns button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 215, 0, 0.3);
+    color: #ffd700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topBtns button:hover {
+    transform: scale(1.1);
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+}
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ==========================================
+   TITLE SECTION
+========================================== */
+.title-section {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeInDown 1s ease forwards;
+}
+
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff6b6b, #ffd93d, #ff6b6b);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+    text-shadow: none;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.title-line {
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+.sub-title {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   SISTERS CONTAINER
+========================================== */
+.sisters-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 40px;
+}
+
+/* ==========================================
+   SISTER CARD - FLIP EFFECT
+========================================== */
+.sister-card {
+    perspective: 1000px;
+    height: 520px;  /* ✅ Increased from 420px to 520px */
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    position: relative;
+}
+
+.sister-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sister-card:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.sister-card:nth-child(2) {
+    transition-delay: 0.6s;
+}
+
+.sister-card:nth-child(3) {
+    transition-delay: 1.0s;
+}
+
+.sister-card:nth-child(4) {
+    transition-delay: 1.4s;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-style: preserve-3d;
+}
+
+.sister-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================
+   CARD FRONT
+========================================== */
+.card-front {
+    background: linear-gradient(145deg, #2a1215, #1a0808);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 78%;  /* ✅ Increased from 75% to 78% */
+    position: relative;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.sister-card:hover .image-wrapper img {
+    transform: scale(1.05);
+}
+
+.image-wrapper .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+}
+
+.sister-number {
+    font-size: 3rem;  /* ✅ Increased from 2.5rem to 3rem */
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.sister-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;  /* ✅ Increased from 1.4rem to 1.6rem */
+    color: #ffd700;
+    padding: 18px 20px;  /* ✅ Increased from 15px to 18px */
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5));
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   CARD BACK - QUOTE
+========================================== */
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(145deg, #1a0808, #2a1215);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    padding: 40px 30px;  /* ✅ Increased from 30px 25px to 40px 30px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote-wrapper {
+    text-align: center;
+    animation: fadeInQuote 0.6s ease;
+}
+
+@keyframes fadeInQuote {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.quote-icon {
+    font-size: 3rem;  /* ✅ Increased from 2.5rem to 3rem */
+    display: block;
+    margin-bottom: 18px;  /* ✅ Increased from 15px to 18px */
+}
+.quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;  /* ✅ Increased from 1.1rem to 1.2rem */
+    line-height: 2;  /* ✅ Increased from 1.8 to 2 */
+    color: #f0e6d3;
+    font-weight: 500;
+    margin-bottom: 18px;  /* ✅ Increased from 15px to 18px */
+    font-style: italic;
+}
+
+.quote-author {
+    font-size: 0.85rem;
+    color: #ffd700;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   SISTER EMOJI STYLES
+========================================== */
+.sister-emoji {
+    display: inline-block;
+    font-size: 1.8rem;
+    margin-top: 12px;
+    animation: emojiFloat 2.5s ease-in-out infinite;
+}
+
+/* Different animation delays for each sister */
+#sister1 .sister-emoji {
+    animation-delay: 0s;
+}
+
+#sister2 .sister-emoji {
+    animation-delay: 0.6s;
+}
+
+#sister3 .sister-emoji {
+    animation-delay: 1.2s;
+}
+
+#sister4 .sister-emoji {
+    animation-delay: 1.8s;
+}
+
+@keyframes emojiFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-5px) scale(1.15);
+    }
+}
+
+/* Sister Number Icons - Different colors */
+#sister1 .sister-number {
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+#sister2 .sister-number {
+    color: #ff6b9d;
+    text-shadow: 0 0 20px rgba(255, 107, 157, 0.4);
+}
+
+#sister3 .sister-number {
+    color: #ff9a76;
+    text-shadow: 0 0 20px rgba(255, 154, 118, 0.4);
+}
+
+#sister4 .sister-number {
+    color: #ff6b6b;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+}
+
+/* Quote Icon Colors */
+#sister1 .quote-icon {
+    color: #ffd700;
+}
+
+#sister2 .quote-icon {
+    color: #ff6b9d;
+}
+
+#sister3 .quote-icon {
+    color: #ff9a76;
+}
+
+#sister4 .quote-icon {
+    color: #ff6b6b;
+}
+
+/* Card Border Glow Colors on Hover */
+#sister1:hover::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 215, 0, 0.5) 100%);
+}
+
+#sister2:hover::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 107, 157, 0.5) 100%);
+}
+
+#sister3:hover::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 154, 118, 0.5) 100%);
+}
+
+#sister4:hover::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 107, 107, 0.5) 100%);
+}
+
+/* ==========================================
+   HOVER GLOW EFFECT
+========================================== */
+.sister-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 22px;
+    padding: 2px;
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 215, 0, 0.3) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.sister-card:hover::before {
+    opacity: 1;
+}
+
+/* ==========================================
+   NEXT BUTTON
+========================================== */
+.next-btn {
+    position: relative;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(238, 90, 36, 0.4);
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 2.2s;
+}
+
+.next-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(238, 90, 36, 0.6);
+}
+
+.next-btn:active {
+    transform: scale(0.98);
+}
+
+.btn-spark {
+    display: inline-block;
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.3) rotate(20deg);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   PLAYLIST POPUP
+========================================== */
+.playlist-modal {
+    position: fixed;
+    top: 75px;
+    right: 25px;
+    display: none;
+    z-index: 200;
+}
+
+.playlist-modal.active {
+    display: block;
+}
+
+.playlist-card {
+    width: 270px;
+    background: #1a0808;
+    border: 1.5px solid rgba(255, 215, 0, 0.2);
+    border-radius: 20px;
+    padding: 18px 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    color: #fff;
+}
+
+.playlist-header {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #ffd700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.playlist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.track-item:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.track-item.active {
+    background: rgba(255, 215, 0, 0.15);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.track-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.15);
+    color: #ffd700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.track-item.active .track-num {
+    background: #ffd700;
+    color: #1a0808;
+}
+
+.track-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.track-sub {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.playlist-footer {
+    text-align: center;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 400;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+@media screen and (max-width: 1024px) {
+    .sisters-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .sister-card {
+        height: 380px;
+    }
+
+    .main-title {
+        font-size: 3.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 60px 15px 30px;
+    }
+
+    .sisters-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .sister-card {
+        height: 380px;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .quote-text {
+        font-size: 0.9rem;
+    }
+
+    .sister-name {
+        font-size: 1.1rem;
+        padding: 10px 15px;
+    }
+
+    .topBtns {
+        top: 15px;
+        right: 15px;
+    }
+
+    .topBtns button {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .next-btn {
+        padding: 14px 30px;
+        font-size: 0.95rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sisters-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .sister-card {
+        height: 380px;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .sub-title {
+        font-size: 0.85rem;
+    }
+
+    .title-line {
+        width: 80px;
+    }
+
+    .quote-text {
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .quote-icon {
+        font-size: 1.8rem;
+    }
+
+    .quote-author {
+        font-size: 0.7rem;
+    }
+
+    .sister-name {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    .sister-number {
+        font-size: 1.5rem;
+    }
+
+    .sister-emoji {
+        font-size: 1.3rem;
+    }
+
+    .next-btn {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+    }
+}
